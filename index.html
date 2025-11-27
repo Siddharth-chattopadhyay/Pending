@@ -1,106 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Smart Task & Habit Tracker</title>
-        <style>
-            *{
-                font-family: Arial, Helvetica, sans-serif;
-                margin: 0;
-                box-sizing: border-box;
-            }
-            /* Form for adding new tasks */
-            .add{
-                display: flex; /* flex */
-                justify-content: center;
-                align-items: center;
-                position: fixed;
-                z-index: 10;
-                width: 100%;
-                height: 100vh;
-                background-color: rgba(0, 0, 0, 0.1);
-            }
-            .add > form{
-                width: 50%;
-                height: 70%;
-                border: 2px solid black;
-                padding: 10px;
-                display: flex;
-                align-items: stretch;
-                justify-content: space-evenly;
-                flex-direction: column;
-                overflow: scroll;
-                background-color:floralwhite;
-            }
-            .add label{
-                font-size: 30px;
-            }
-            .add input{
-                width: 100%;
-                padding: 10px;
-                font-size: 25px;
-            }
-            .add > form > div{
-                margin-bottom: 20px;
-            }
-            #add-new-task{
-                font-size: 20px;
-                padding: 10px 0;
-                box-shadow: -5px -5px 10px 0px black;
-                cursor: pointer;
-            }
-            #add-new-task:active{
-                cursor:cell;
-            }
-            .head{
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-            .head > button{
-                width: 30px;
-                height: 30px;
-            }
-            textarea{
-                font-size: 25px;
-                width: 100%;
-                resize: vertical;
-            }
-            /* Dashboard */
-        </style>
-    </head>
-    <body>
-        <!-- (Title, Description, Category, Due Date, Status) -->
-        <div class="add">
-            <form>
-                <div class="head">
-                    <h1>Enter details of new task</h1>
-                    <button type="button">X</button>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Task & Habit Tracker</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <style>
+        #tasklist{
+            width: 90%;
+            margin: 0 auto;
+            border: 2px solid black;
+            height: 50vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="tasklist">
+
+    </div>
+    
+    <strong>Dashboard:</strong>
+    <div class="dashboard">
+        <p class="total"></p>
+        <p class="completed"></p>
+        <p class="pending"></p>
+        <p class="overdue"></p>
+        <p class="progress"></p>
+    </div>
+    <div class="modal fade" id="form-create-new-task" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div>
-                    <label for="title">Enter title</label>
-                    <input type="text" id="title" placeholder="Title">
+                <div class="modal-body">
+                    <!-- Show a second modal and hide this one with the button below. -->
+                    <form>
+                        <div class="mb-3">
+                            <label for="title" class="col-form-label">Title:</label>
+                            <input type="text" class="form-control" id="title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="col-form-label">Description:</label>
+                            <textarea class="form-control" id="description"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="category" class="col-form-label">Category:</label>
+                            <input type="text" class="form-control" id="category">
+                        </div>
+                        <div class="mb-3">
+                            <label for="due-date" class="col-form-label">Due Date:</label>
+                            <input type="datetime-local" class="form-control" id="due-date">
+                        </div>
+                        <div class="mb-3">
+                            <label for="status" class="col-form-label">Status:</label>
+                            <select class="form-control" id="status">
+                                <option value="pending">Pending</option>
+                                <option value="completed">Completed</option>
+                                <option value="overdue">Overdue</option>
+                            </select>
+                        </div>
+                    </form>
                 </div>
-                <div>
-                    <label for="description">Enter description</label>
-                    <textarea id="description" placeholder="Description"></textarea>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#create" data-bs-toggle="modal" id="btn-create-new" onclick="save()">Save & Create New Task</button>
                 </div>
-                <div>
-                    <label for="category">Enter the name of the category</label>
-                    <input type="text" id="category" placeholder="Category Name">
-                </div>
-                <div>
-                    <label for="due">Due Date</label>
-                    <input type="datetime-local" id="due">
-                </div>
-                <div>
-                    <label for="status">Status</label>
-                    
-                </div>
-                <button type="button" id="add-new-task">Add new task</button>
-            </form>
+            </div>
         </div>
-        <script src="script.js"></script>
-    </body>
+    </div>
+
+    <button class="btn btn-primary" data-bs-target="#form-create-new-task" data-bs-toggle="modal">Create new task</button>
+    <script src="script.js"></script>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>
