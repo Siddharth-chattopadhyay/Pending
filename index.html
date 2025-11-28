@@ -9,17 +9,17 @@
     <style>
         #tasklist{
             width: 90%;
-            margin: 0 auto;
             border: 2px solid black;
             height: 50vh;
+            z-index: -1;
         }
     </style>
 </head>
 
 <body>
 
-    <div id="tasklist">
-
+    <div id="tasklist" class="mx-auto p-2 position-fixed top-50 start-50 translate-middle">
+        
     </div>
     
     <strong>Dashboard:</strong>
@@ -75,7 +75,7 @@
     </div>
 
     <button class="btn btn-primary" data-bs-target="#form-create-new-task" data-bs-toggle="modal">Create new task</button>
-    <script src="script.js"></script>
+    <script src="assets/js/script.js"></script>
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
 </body>
 
